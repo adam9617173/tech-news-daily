@@ -1,12 +1,12 @@
 name: Daily Tech News Update
 
 on:
-  # Run at 9 AM and 9 PM Taiwan time (UTC+8)
-  # 9 AM Taiwan = 1 AM UTC
-  # 9 PM Taiwan = 1 PM UTC (13:00)
+  # Run at 10 AM and 10 PM Taiwan time (UTC+8)
+  # 10 AM Taiwan = 2 AM UTC
+  # 10 PM Taiwan = 14:00 PM UTC (14:00)
   schedule:
-    - cron: '0 1 * * *'  # 9 AM Taiwan
-    - cron: '0 13 * * *' # 9 PM Taiwan
+    - cron: '0 2 * * *'   # 10 AM Taiwan
+    - cron: '0 14 * * *'  # 10 PM Taiwan
   
   # Allow manual trigger
   workflow_dispatch:
