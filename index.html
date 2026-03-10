@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌐 科技新聞精選 | Tech News Daily</title>
     
-    <!-- Open Graph / Social Media -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="🌐 科技新聞精選 | 每日國際科技要聞">
     <meta property="og:description" content="每日國際科技要聞 · 繁體中文報導">
@@ -14,15 +14,11 @@
     <meta name="twitter:image" content="https://raw.githubusercontent.com/adam9617173/tech-news-daily/main/preview.svg">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
-            line-height: 1.8;
-            background: #f5f5f5;
+            line-height: 1.6;
+            background: #f0f2f5;
             color: #333;
         }
         header {
@@ -30,35 +26,9 @@
             color: white;
             padding: 2.5rem 1rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-            animation: shimmer 3s infinite linear;
-        }
-        @keyframes shimmer {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        header p {
-            opacity: 0.9;
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 1;
-        }
+        header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        header p { opacity: 0.9; }
         .header-badge {
             display: inline-block;
             background: rgba(255,255,255,0.2);
@@ -66,14 +36,11 @@
             border-radius: 20px;
             margin-top: 1rem;
             font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
         }
         .date {
             text-align: center;
             padding: 1.2rem;
             color: #666;
-            font-size: 1rem;
             background: white;
             border-bottom: 1px solid #eee;
         }
@@ -82,76 +49,69 @@
             margin: 0 auto;
             padding: 1.5rem;
         }
-        .article {
+        
+        /* Article Cards */
+        .article-card {
             background: white;
             border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
-        .article:hover {
+        .article-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
-        .article h2 {
+        .article-card h2 {
             color: #1a1a2e;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
             line-height: 1.4;
         }
-        .article .meta {
-            color: #888;
-            font-size: 0.85rem;
-            margin-bottom: 1.2rem;
+        .article-card .summary {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .article-card .meta {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             flex-wrap: wrap;
             gap: 0.5rem;
-            align-items: center;
         }
-        .article .source {
-            display: inline-block;
+        .article-card .source {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 0.25rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
-            font-weight: 500;
         }
-        .article .tag {
-            display: inline-block;
-            background: #f0f0f0;
-            color: #555;
-            padding: 0.2rem 0.6rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-        }
-        .article p {
-            margin-bottom: 1rem;
-            text-align: justify;
-            color: #444;
-        }
-        .article .original-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+        .article-card .read-more {
             color: #667eea;
-            text-decoration: none;
             font-size: 0.9rem;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            background: #f8f9ff;
-            border-radius: 8px;
-            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
-        .article .original-link:hover {
-            background: #e8ebff;
-            text-decoration: none;
-        }
-        .article .original-link svg {
+        .article-card .read-more svg {
             width: 16px;
             height: 16px;
+            transition: transform 0.2s;
         }
+        .article-card:hover .read-more svg {
+            transform: translateX(4px);
+        }
+        
         footer {
             text-align: center;
             padding: 2rem;
@@ -160,16 +120,10 @@
             background: white;
             border-top: 1px solid #eee;
         }
-        .footer-logo {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
         
-        /* Responsive */
         @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            .article { padding: 1.5rem; }
-            main { padding: 1rem; }
+            header h1 { font-size: 1.6rem; }
+            .article-card { padding: 1.2rem; }
         }
     </style>
 </head>
@@ -183,95 +137,39 @@
     <div class="date">📅 2026年3月10日</div>
     
     <main>
-        <article class="article">
+        <!-- Article 1 -->
+        <a href="articles/01-anthropic-sues-pentagon.html" class="article-card">
             <h2>🤖 Anthropic 起訴美國國防部：AI 監管爭議升溫</h2>
+            <p class="summary">AI 公司 Anthropic 對國防部提起訴訟，挑戰 AI 使用限制。這是 AI 產業與政府監管機構之間的重要法律較量。</p>
             <div class="meta">
                 <span class="source">📰 Reuters</span>
-                <span class="tag">#AI</span>
-                <span class="tag">#美國國防部</span>
-                <span class="tag">#Anthropic</span>
+                <span class="read-more">閱讀全文 →</span>
             </div>
-            <p>
-                AI 公司 Anthropic 近日對美國國防部提起訴訟，挑戰政府在 AI 使用方面的限制措施。這起訴訟可能對未來 AI 技術在軍事領域的應用產生深遠影響。
-            </p>
-            <p>
-                根據報導，Anthropic 指責國防部的限制政策損害了 AI 創新的權利，並尋求法院撤銷相關禁令。此案也引發了關於 AI 技術發展與國家安全之間平衡的廣泛討論。
-            </p>
-            <p>
-                專家表示，這是 AI 產業與政府監管機構之間的一場重要法律較量，其結果將可能決定未來 AI 技術在美國政府系統中的應用方式。
-            </p>
-            <p>
-                Anthropic 是 Claude AI 聊天機器人的開發公司近年來快速崛起成為 AI 領域的重要參與者此次起訴顯示 AI 產業對於政府過度監管的擔憂日益加深。
-            </p>
-            <a href="https://www.reuters.com/technology/" target="_blank" class="original-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-                閱讀原文
-            </a>
-        </article>
+        </a>
 
-        <article class="article">
+        <!-- Article 2 -->
+        <a href="articles/02-iphone-hack.html" class="article-card">
             <h2>📱 iPhone 遭駭事件升級：可能與美國軍火商有關</h2>
+            <p class="summary">研究人員發現用於入侵 iPhone 的間諜工具可能源自美國軍事承包商。此工具被俄羅斯間諜組織使用，引發資安疑慮。</p>
             <div class="meta">
                 <span class="source">📰 TechCrunch</span>
-                <span class="tag">#iPhone</span>
-                <span class="tag">#資安</span>
-                <span class="tag">#間諜軟體</span>
+                <span class="read-more">閱讀全文 →</span>
             </div>
-            <p>
-                研究人員發現，一款被用於入侵 iPhone 的間諜工具可能源自於美國軍事承包商。這款工具被俄羅斯間諜組織使用，引發了對於數位武器出口管制的擔憂。
-            </p>
-            <p>
-                此駭客工具能夠繞過 iOS 系統的安全防護，存取用戶的訊息、位置數據和其他敏感資訊。安全專家呼籲蘋果公司加強對這類威脅的防護措施。
-            </p>
-            <p>
-                據悉，這款間諜工具被命名為「egasus」的同類產品，能夠在用戶不知情的情況下遠程監控設備。此發現也再次引發了關於消費電子產品安全的討論。
-            </p>
-            <a href="https://techcrunch.com/" target="_blank" class="original-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-                閱讀原文
-            </a>
-        </article>
+        </a>
 
-        <article class="article">
+        <!-- Article 3 -->
+        <a href="articles/03-nvidia-h200.html" class="article-card">
             <h2>💡 Nvidia 策略轉向：H200 晶片產量提升</h2>
+            <p class="summary">Nvidia 調整晶片策略，提升 H200 產量。H200 採用先進 HBM3e 記憶體技術，對大型語言模型訓練至關重要。</p>
             <div class="meta">
                 <span class="source">📰 Yahoo Finance</span>
-                <span class="tag">#Nvidia</span>
-                <span class="tag">#晶片</span>
-                <span class="tag">#AI硬體</span>
+                <span class="read-more">閱讀全文 →</span>
             </div>
-            <p>
-                根據最新報導，Nvidia 正在調整其晶片生產策略，將重點放在 H200 晶片的產量提升上。H200 是專為 AI 訓練和推理設計的高效能 GPU。
-            </p>
-            <p>
-                這一策略調整顯示 AI 硬體市場需求持續強勁，Nvidia 試圖鞏固其在 AI 運算領域的領導地位。同時，市場也傳出 OpenAI 領導層變動的消息，可能影響 AI 產業發展走向。
-            </p>
-            <p>
-                H200 晶片採用先进的 HBM3e 記憶體技術，能夠提供更快的数据传输速度和更高的記憶體容量。這對於大型語言模型的訓練和部署至關重要。
-            </p>
-            <a href="https://finance.yahoo.com/topic/tech/" target="_blank" class="original-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-                閱讀原文
-            </a>
-        </article>
+        </a>
     </main>
 
     <footer>
-        <div class="footer-logo">👾</div>
-        <p>由 C寶 AI 驅動 | 每日自動更新</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #aaa;">© 2026 Tech News Daily</p>
+        <p>👾 由 C寶 AI 驅動 | 每日自動更新</p>
     </footer>
 </body>
 </html>
