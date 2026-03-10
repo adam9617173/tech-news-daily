@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0f3460"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="600" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" fill="white" font-weight="bold">🌐</text>
+  <text x="600" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" fill="white" font-weight="bold">科技新聞精選</text>
+  <text x="600" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="rgba(255,255,255,0.8)">每日國際科技要聞 · 繁體中文報導</text>
+  <text x="600" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="rgba(255,255,255,0.6)">🤖 AI 驅動 · 自動更新</text>
+  <rect x="50" y="550" width="1100" height="2" fill="rgba(255,255,255,0.2)"/>
+  <text x="600" y="590" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.5)">tech-news-daily</text>
+</svg>
