@@ -309,35 +309,42 @@
         (function() {
             const container = document.getElementById('floatingStickers');
             const stickers = ['sticker-1.png', 'sticker-2.png', 'sticker-3.png', 'sticker-4.png', 'sticker-5.png', 'sticker-6.png', 'sticker-7.png', 'sticker-8.png', 'sticker-9.png', 'sticker-10.png'];
-            const numStickers = 18;
             
             function getContainerSize() {
                 const rect = container.getBoundingClientRect();
                 return { width: rect.width, height: rect.height };
             }
             
-            // Create stickers
-            for (let i = 0; i < numStickers; i++) {
+            // Create stickers with different sizes
+            // 3 large + 6 medium + rest small
+            const sizes = [
+                ...Array(3).fill(0).map(() => 85 + Math.random() * 20),  // Large: 85-105px
+                ...Array(6).fill(0).map(() => 55 + Math.random() * 20),  // Medium: 55-75px
+                ...Array(12).fill(0).map(() => 30 + Math.random() * 18)   // Small: 30-48px
+            ];
+            
+            sizes.forEach((size, i) => {
                 const img = document.createElement('img');
                 img.src = stickers[i % stickers.length];
                 img.className = 'floating-sticker';
                 img.alt = '';
-                
-                // Random size between 35-55px
-                const size = 35 + Math.random() * 20;
                 img.style.width = size + 'px';
                 img.style.height = size + 'px';
                 
+                // Larger stickers should be slightly more visible
+                img.style.opacity = size > 70 ? '0.18' : (size > 50 ? '0.15' : '0.1');
+                
                 container.appendChild(img);
                 
-                // Physics properties
-                img._vx = (Math.random() - 0.5) * 1.5;
-                img._vy = (Math.random() - 0.5) * 1.5;
+                // Physics properties - larger = slower
+                const speedFactor = size > 70 ? 0.8 : (size > 50 ? 1 : 1.2);
+                img._vx = (Math.random() - 0.5) * 1.5 * speedFactor;
+                img._vy = (Math.random() - 0.5) * 1.5 * speedFactor;
                 img._rotation = Math.random() * 360;
                 img._rotationSpeed = (Math.random() - 0.5) * 2;
-            }
+            });
             
-            // Initialize positions after container is rendered
+            // Initialize positions
             setTimeout(() => {
                 const { width, height } = getContainerSize();
                 const stickerElems = container.querySelectorAll('.floating-sticker');
@@ -349,12 +356,11 @@
             
             // Animation loop
             function animate() {
-                const stickers = container.querySelectorAll('.floating-sticker');
+                const stickerElems = container.querySelectorAll('.floating-sticker');
                 const { width, height } = getContainerSize();
                 
                 if (width > 0 && height > 0) {
-                    stickers.forEach(img => {
-                        // Update position
+                    stickerElems.forEach(img => {
                         img._x += img._vx;
                         img._y += img._vy;
                         img._rotation += img._rotationSpeed;
@@ -379,7 +385,7 @@
                             img._vy = -Math.abs(img._vy) * (0.8 + Math.random() * 0.4);
                         }
                         
-                        // Randomly change velocity
+                        // Random velocity change
                         if (Math.random() < 0.003) {
                             img._vx += (Math.random() - 0.5) * 0.3;
                             img._vy += (Math.random() - 0.5) * 0.3;
@@ -387,7 +393,6 @@
                             img._vy = Math.max(-2, Math.min(2, img._vy));
                         }
                         
-                        // Apply transform
                         img.style.transform = `translate(${img._x}px, ${img._y}px) rotate(${img._rotation}deg)`;
                     });
                 }
@@ -397,7 +402,6 @@
             
             animate();
             
-            // Handle resize
             window.addEventListener('resize', () => {
                 const { width, height } = getContainerSize();
                 const stickerElems = container.querySelectorAll('.floating-sticker');
