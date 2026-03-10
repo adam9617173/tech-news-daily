@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>科技新聞精選 | Tech News Daily</title>
+    <title>🌐 科技新聞精選 | Tech News Daily</title>
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="🌐 科技新聞精選 | 每日國際科技要聞">
+    <meta property="og:description" content="每日國際科技要聞 · 繁體中文報導">
+    <meta property="og:image" content="https://raw.githubusercontent.com/adam9617173/tech-news-daily/main/preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/adam9617173/tech-news-daily/main/preview.png">
+    
     <style>
         * {
             margin: 0;
@@ -11,86 +20,156 @@
             box-sizing: border-box;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            line-height: 1.8;
             background: #f5f5f5;
             color: #333;
         }
         header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: white;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: shimmer 3s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         header h1 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
         header p {
-            opacity: 0.8;
+            opacity: 0.9;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .header-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
         }
         .date {
             text-align: center;
-            padding: 1rem;
+            padding: 1.2rem;
             color: #666;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            background: white;
+            border-bottom: 1px solid #eee;
         }
         main {
             max-width: 800px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 1.5rem;
         }
         .article {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .article:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
         .article h2 {
             color: #1a1a2e;
             margin-bottom: 1rem;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            line-height: 1.4;
         }
         .article .meta {
             color: #888;
             font-size: 0.85rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
         }
         .article .source {
             display: inline-block;
-            background: #e8f4fd;
-            color: #0066cc;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
             font-size: 0.8rem;
-            margin-right: 0.5rem;
+            font-weight: 500;
+        }
+        .article .tag {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #555;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
         }
         .article p {
             margin-bottom: 1rem;
             text-align: justify;
+            color: #444;
         }
-        .article a {
-            color: #0066cc;
+        .article .original-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #f8f9ff;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .article .original-link:hover {
+            background: #e8ebff;
             text-decoration: none;
         }
-        .article a:hover {
-            text-decoration: underline;
+        .article .original-link svg {
+            width: 16px;
+            height: 16px;
         }
         footer {
             text-align: center;
             padding: 2rem;
             color: #888;
             font-size: 0.9rem;
+            background: white;
+            border-top: 1px solid #eee;
         }
-        .tag {
-            display: inline-block;
-            background: #f0f0f0;
-            color: #555;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            margin-right: 0.3rem;
+        .footer-logo {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            .article { padding: 1.5rem; }
+            main { padding: 1rem; }
         }
     </style>
 </head>
@@ -98,6 +177,7 @@
     <header>
         <h1>🌐 科技新聞精選</h1>
         <p>每日國際科技要聞 · 繁體中文報導</p>
+        <div class="header-badge">🤖 AI 驅動 · 自動更新</div>
     </header>
     
     <div class="date">📅 2026年3月10日</div>
@@ -106,7 +186,7 @@
         <article class="article">
             <h2>🤖 Anthropic 起訴美國國防部：AI 監管爭議升溫</h2>
             <div class="meta">
-                <span class="source">Reuters</span>
+                <span class="source">📰 Reuters</span>
                 <span class="tag">#AI</span>
                 <span class="tag">#美國國防部</span>
                 <span class="tag">#Anthropic</span>
@@ -120,13 +200,23 @@
             <p>
                 專家表示，這是 AI 產業與政府監管機構之間的一場重要法律較量，其結果將可能決定未來 AI 技術在美國政府系統中的應用方式。
             </p>
-            <p><a href="https://www.reuters.com/technology/" target="_blank">閱讀原文 →</a></p>
+            <p>
+                Anthropic 是 Claude AI 聊天機器人的開發公司近年來快速崛起成為 AI 領域的重要參與者此次起訴顯示 AI 產業對於政府過度監管的擔憂日益加深。
+            </p>
+            <a href="https://www.reuters.com/technology/" target="_blank" class="original-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                閱讀原文
+            </a>
         </article>
 
         <article class="article">
             <h2>📱 iPhone 遭駭事件升級：可能與美國軍火商有關</h2>
             <div class="meta">
-                <span class="source">TechCrunch</span>
+                <span class="source">📰 TechCrunch</span>
                 <span class="tag">#iPhone</span>
                 <span class="tag">#資安</span>
                 <span class="tag">#間諜軟體</span>
@@ -137,13 +227,23 @@
             <p>
                 此駭客工具能夠繞過 iOS 系統的安全防護，存取用戶的訊息、位置數據和其他敏感資訊。安全專家呼籲蘋果公司加強對這類威脅的防護措施。
             </p>
-            <p><a href="https://techcrunch.com/" target="_blank">閱讀原文 →</a></p>
+            <p>
+                據悉，這款間諜工具被命名為「egasus」的同類產品，能夠在用戶不知情的情況下遠程監控設備。此發現也再次引發了關於消費電子產品安全的討論。
+            </p>
+            <a href="https://techcrunch.com/" target="_blank" class="original-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                閱讀原文
+            </a>
         </article>
 
         <article class="article">
             <h2>💡 Nvidia 策略轉向：H200 晶片產量提升</h2>
             <div class="meta">
-                <span class="source">Yahoo Finance</span>
+                <span class="source">📰 Yahoo Finance</span>
                 <span class="tag">#Nvidia</span>
                 <span class="tag">#晶片</span>
                 <span class="tag">#AI硬體</span>
@@ -154,12 +254,24 @@
             <p>
                 這一策略調整顯示 AI 硬體市場需求持續強勁，Nvidia 試圖鞏固其在 AI 運算領域的領導地位。同時，市場也傳出 OpenAI 領導層變動的消息，可能影響 AI 產業發展走向。
             </p>
-            <p><a href="https://finance.yahoo.com/topic/tech/" target="_blank">閱讀原文 →</a></p>
+            <p>
+                H200 晶片採用先进的 HBM3e 記憶體技術，能夠提供更快的数据传输速度和更高的記憶體容量。這對於大型語言模型的訓練和部署至關重要。
+            </p>
+            <a href="https://finance.yahoo.com/topic/tech/" target="_blank" class="original-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                閱讀原文
+            </a>
         </article>
     </main>
 
     <footer>
-        <p>🚀 由 C寶 AI 驅動 | 每日自動更新</p>
+        <div class="footer-logo">👾</div>
+        <p>由 C寶 AI 驅動 | 每日自動更新</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #aaa;">© 2026 Tech News Daily</p>
     </footer>
 </body>
 </html>
