@@ -110,20 +110,13 @@
             left: 0;
             pointer-events: none;
             z-index: 0;
+            overflow: hidden;
         }
         .floating-sticker {
             position: absolute;
             object-fit: contain;
-            opacity: 0.2;
-            animation: float var(--duration, 6s) ease-in-out infinite;
-            animation-delay: var(--delay, 0s);
-        }
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-30px) rotate(15deg); }
-            50% { transform: translateY(-15px) rotate(-10deg); }
-            75% { transform: translateY(-35px) rotate(20deg); }
-            100% { transform: translateY(0) rotate(0deg); }
+            opacity: 0.15;
+            will-change: transform;
         }
         
         /* Divider */
@@ -307,21 +300,87 @@
 <body>
     <!-- Hero / Introduction -->
     <section class="hero">
-        <!-- Floating decorative stickers -->
-        <div class="floating-stickers">
-            <img src="sticker-3.png" alt="" class="floating-sticker" style="top: 5%; left: 3%; --duration: 5s; --delay: 0s;">
-            <img src="sticker-4.png" alt="" class="floating-sticker" style="top: 15%; right: 5%; --duration: 7s; --delay: 1s;">
-            <img src="sticker-5.png" alt="" class="floating-sticker" style="top: 8%; left: 25%; --duration: 4s; --delay: 2s;">
-            <img src="sticker-6.png" alt="" class="floating-sticker" style="top: 25%; left: 8%; --duration: 8s; --delay: 0.5s;">
-            <img src="sticker-7.png" alt="" class="floating-sticker" style="top: 12%; right: 15%; --duration: 6s; --delay: 1.5s;">
-            <img src="sticker-8.png" alt="" class="floating-sticker" style="bottom: 20%; left: 5%; --duration: 9s; --delay: 3s;">
-            <img src="sticker-9.png" alt="" class="floating-sticker" style="bottom: 15%; right: 8%; --duration: 5s; --delay: 2.5s;">
-            <img src="sticker-10.png" alt="" class="floating-sticker" style="bottom: 25%; left: 15%; --duration: 7s; --delay: 1s;">
-            <img src="sticker-1.png" alt="" class="floating-sticker" style="top: 20%; left: 60%; --duration: 6s; --delay: 4s;">
-            <img src="sticker-3.png" alt="" class="floating-sticker" style="bottom: 30%; right: 20%; --duration: 8s; --delay: 2s;">
-            <img src="sticker-5.png" alt="" class="floating-sticker" style="top: 35%; left: 45%; --duration: 4s; --delay: 0.8s;">
-            <img src="sticker-7.png" alt="" class="floating-sticker" style="bottom: 40%; left: 35%; --duration: 6s; --delay: 3.5s;">
-        </div>
+        <!-- Floating decorative stickers - Physics based -->
+        <div class="floating-stickers" id="floatingStickers"></div>
+        
+        <script>
+        (function() {
+            const container = document.getElementById('floatingStickers');
+            const stickers = ['sticker-1.png', 'sticker-2.png', 'sticker-3.png', 'sticker-4.png', 'sticker-5.png', 'sticker-6.png', 'sticker-7.png', 'sticker-8.png', 'sticker-9.png', 'sticker-10.png'];
+            const numStickers = 15;
+            
+            // Create stickers
+            for (let i = 0; i < numStickers; i++) {
+                const img = document.createElement('img');
+                img.src = stickers[i % stickers.length];
+                img.className = 'floating-sticker';
+                img.alt = '';
+                
+                // Random size between 40-70px
+                const size = 40 + Math.random() * 30;
+                img.style.width = size + 'px';
+                img.style.height = size + 'px';
+                
+                container.appendChild(img);
+                
+                // Physics properties
+                img._vx = (Math.random() - 0.5) * 2;  // X velocity
+                img._vy = (Math.random() - 0.5) * 2;  // Y velocity
+                img._rotation = Math.random() * 360;
+                img._rotationSpeed = (Math.random() - 0.5) * 3;
+                img._x = Math.random() * (window.innerWidth || 800);
+                img._y = Math.random() * (window.innerHeight || 600);
+            }
+            
+            // Animation loop
+            function animate() {
+                const stickers = container.querySelectorAll('.floating-sticker');
+                const width = window.innerWidth || 800;
+                const height = window.innerHeight || 600;
+                
+                stickers.forEach(img => {
+                    // Update position
+                    img._x += img._vx;
+                    img._y += img._vy;
+                    img._rotation += img._rotationSpeed;
+                    
+                    // Bounce off edges with random variation
+                    if (img._x <= -50) {
+                        img._x = -50;
+                        img._vx = Math.abs(img._vx) * (0.8 + Math.random() * 0.4);
+                    }
+                    if (img._x >= width - 50) {
+                        img._x = width - 50;
+                        img._vx = -Math.abs(img._vx) * (0.8 + Math.random() * 0.4);
+                    }
+                    if (img._y <= -50) {
+                        img._y = -50;
+                        img._vy = Math.abs(img._vy) * (0.8 + Math.random() * 0.4);
+                    }
+                    if (img._y >= height - 50) {
+                        img._y = height - 50;
+                        img._vy = -Math.abs(img._vy) * (0.8 + Math.random() * 0.4);
+                    }
+                    
+                    // Randomly change velocity occasionally
+                    if (Math.random() < 0.005) {
+                        img._vx += (Math.random() - 0.5) * 0.5;
+                        img._vy += (Math.random() - 0.5) * 0.5;
+                        // Clamp velocity
+                        img._vx = Math.max(-3, Math.min(3, img._vx));
+                        img._vy = Math.max(-3, Math.min(3, img._vy));
+                    }
+                    
+                    // Apply transform
+                    img.style.transform = `translate(${img._x}px, ${img._y}px) rotate(${img._rotation}deg)`;
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+        })();
+        </script>
         
         <div class="hero-content">
             <img src="sticker-2.png" alt="C寶" class="hero-avatar">
