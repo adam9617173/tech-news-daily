@@ -110,13 +110,15 @@
             left: 0;
             pointer-events: none;
             z-index: 0;
-            overflow: hidden;
+            overflow: visible;
         }
         .floating-sticker {
             position: absolute;
             object-fit: contain;
-            opacity: 0.15;
+            opacity: 0.12;
             will-change: transform;
+            left: 0;
+            top: 0;
         }
         
         /* Divider */
@@ -307,7 +309,12 @@
         (function() {
             const container = document.getElementById('floatingStickers');
             const stickers = ['sticker-1.png', 'sticker-2.png', 'sticker-3.png', 'sticker-4.png', 'sticker-5.png', 'sticker-6.png', 'sticker-7.png', 'sticker-8.png', 'sticker-9.png', 'sticker-10.png'];
-            const numStickers = 15;
+            const numStickers = 18;
+            
+            function getContainerSize() {
+                const rect = container.getBoundingClientRect();
+                return { width: rect.width, height: rect.height };
+            }
             
             // Create stickers
             for (let i = 0; i < numStickers; i++) {
@@ -316,69 +323,89 @@
                 img.className = 'floating-sticker';
                 img.alt = '';
                 
-                // Random size between 40-70px
-                const size = 40 + Math.random() * 30;
+                // Random size between 35-55px
+                const size = 35 + Math.random() * 20;
                 img.style.width = size + 'px';
                 img.style.height = size + 'px';
                 
                 container.appendChild(img);
                 
                 // Physics properties
-                img._vx = (Math.random() - 0.5) * 2;  // X velocity
-                img._vy = (Math.random() - 0.5) * 2;  // Y velocity
+                img._vx = (Math.random() - 0.5) * 1.5;
+                img._vy = (Math.random() - 0.5) * 1.5;
                 img._rotation = Math.random() * 360;
-                img._rotationSpeed = (Math.random() - 0.5) * 3;
-                img._x = Math.random() * (window.innerWidth || 800);
-                img._y = Math.random() * (window.innerHeight || 600);
+                img._rotationSpeed = (Math.random() - 0.5) * 2;
             }
+            
+            // Initialize positions after container is rendered
+            setTimeout(() => {
+                const { width, height } = getContainerSize();
+                const stickerElems = container.querySelectorAll('.floating-sticker');
+                stickerElems.forEach(img => {
+                    img._x = Math.random() * (width - 50);
+                    img._y = Math.random() * (height - 50);
+                });
+            }, 100);
             
             // Animation loop
             function animate() {
                 const stickers = container.querySelectorAll('.floating-sticker');
-                const width = window.innerWidth || 800;
-                const height = window.innerHeight || 600;
+                const { width, height } = getContainerSize();
                 
-                stickers.forEach(img => {
-                    // Update position
-                    img._x += img._vx;
-                    img._y += img._vy;
-                    img._rotation += img._rotationSpeed;
-                    
-                    // Bounce off edges with random variation
-                    if (img._x <= -50) {
-                        img._x = -50;
-                        img._vx = Math.abs(img._vx) * (0.8 + Math.random() * 0.4);
-                    }
-                    if (img._x >= width - 50) {
-                        img._x = width - 50;
-                        img._vx = -Math.abs(img._vx) * (0.8 + Math.random() * 0.4);
-                    }
-                    if (img._y <= -50) {
-                        img._y = -50;
-                        img._vy = Math.abs(img._vy) * (0.8 + Math.random() * 0.4);
-                    }
-                    if (img._y >= height - 50) {
-                        img._y = height - 50;
-                        img._vy = -Math.abs(img._vy) * (0.8 + Math.random() * 0.4);
-                    }
-                    
-                    // Randomly change velocity occasionally
-                    if (Math.random() < 0.005) {
-                        img._vx += (Math.random() - 0.5) * 0.5;
-                        img._vy += (Math.random() - 0.5) * 0.5;
-                        // Clamp velocity
-                        img._vx = Math.max(-3, Math.min(3, img._vx));
-                        img._vy = Math.max(-3, Math.min(3, img._vy));
-                    }
-                    
-                    // Apply transform
-                    img.style.transform = `translate(${img._x}px, ${img._y}px) rotate(${img._rotation}deg)`;
-                });
+                if (width > 0 && height > 0) {
+                    stickers.forEach(img => {
+                        // Update position
+                        img._x += img._vx;
+                        img._y += img._vy;
+                        img._rotation += img._rotationSpeed;
+                        
+                        const size = parseFloat(img.style.width) || 50;
+                        
+                        // Bounce off edges
+                        if (img._x <= -size/2) {
+                            img._x = -size/2;
+                            img._vx = Math.abs(img._vx) * (0.8 + Math.random() * 0.4);
+                        }
+                        if (img._x >= width - size/2) {
+                            img._x = width - size/2;
+                            img._vx = -Math.abs(img._vx) * (0.8 + Math.random() * 0.4);
+                        }
+                        if (img._y <= -size/2) {
+                            img._y = -size/2;
+                            img._vy = Math.abs(img._vy) * (0.8 + Math.random() * 0.4);
+                        }
+                        if (img._y >= height - size/2) {
+                            img._y = height - size/2;
+                            img._vy = -Math.abs(img._vy) * (0.8 + Math.random() * 0.4);
+                        }
+                        
+                        // Randomly change velocity
+                        if (Math.random() < 0.003) {
+                            img._vx += (Math.random() - 0.5) * 0.3;
+                            img._vy += (Math.random() - 0.5) * 0.3;
+                            img._vx = Math.max(-2, Math.min(2, img._vx));
+                            img._vy = Math.max(-2, Math.min(2, img._vy));
+                        }
+                        
+                        // Apply transform
+                        img.style.transform = `translate(${img._x}px, ${img._y}px) rotate(${img._rotation}deg)`;
+                    });
+                }
                 
                 requestAnimationFrame(animate);
             }
             
             animate();
+            
+            // Handle resize
+            window.addEventListener('resize', () => {
+                const { width, height } = getContainerSize();
+                const stickerElems = container.querySelectorAll('.floating-sticker');
+                stickerElems.forEach(img => {
+                    if (img._x > width) img._x = width - 50;
+                    if (img._y > height) img._y = height - 50;
+                });
+            });
         })();
         </script>
         
