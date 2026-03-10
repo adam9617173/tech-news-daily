@@ -61,10 +61,6 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             animation: bounce 2s infinite;
         }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
@@ -117,19 +113,17 @@
         }
         .floating-sticker {
             position: absolute;
-            width: 60px;
-            height: 60px;
             object-fit: contain;
-            opacity: 0.3;
-            animation: float 6s ease-in-out infinite;
+            opacity: 0.2;
+            animation: float var(--duration, 6s) ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
         }
-        .floating-sticker:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-        .floating-sticker:nth-child(2) { top: 20%; right: 8%; animation-delay: 1s; }
-        .floating-sticker:nth-child(3) { bottom: 15%; left: 10%; animation-delay: 2s; }
-        .floating-sticker:nth-child(4) { bottom: 20%; right: 5%; animation-delay: 3s; }
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+            0% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(15deg); }
+            50% { transform: translateY(-15px) rotate(-10deg); }
+            75% { transform: translateY(-35px) rotate(20deg); }
+            100% { transform: translateY(0) rotate(0deg); }
         }
         
         /* Divider */
@@ -315,14 +309,22 @@
     <section class="hero">
         <!-- Floating decorative stickers -->
         <div class="floating-stickers">
-            <img src="sticker-4.png" alt="" class="floating-sticker">
-            <img src="sticker-5.png" alt="" class="floating-sticker">
-            <img src="sticker-6.png" alt="" class="floating-sticker">
-            <img src="sticker-7.png" alt="" class="floating-sticker">
+            <img src="sticker-3.png" alt="" class="floating-sticker" style="top: 5%; left: 3%; --duration: 5s; --delay: 0s;">
+            <img src="sticker-4.png" alt="" class="floating-sticker" style="top: 15%; right: 5%; --duration: 7s; --delay: 1s;">
+            <img src="sticker-5.png" alt="" class="floating-sticker" style="top: 8%; left: 25%; --duration: 4s; --delay: 2s;">
+            <img src="sticker-6.png" alt="" class="floating-sticker" style="top: 25%; left: 8%; --duration: 8s; --delay: 0.5s;">
+            <img src="sticker-7.png" alt="" class="floating-sticker" style="top: 12%; right: 15%; --duration: 6s; --delay: 1.5s;">
+            <img src="sticker-8.png" alt="" class="floating-sticker" style="bottom: 20%; left: 5%; --duration: 9s; --delay: 3s;">
+            <img src="sticker-9.png" alt="" class="floating-sticker" style="bottom: 15%; right: 8%; --duration: 5s; --delay: 2.5s;">
+            <img src="sticker-10.png" alt="" class="floating-sticker" style="bottom: 25%; left: 15%; --duration: 7s; --delay: 1s;">
+            <img src="sticker-1.png" alt="" class="floating-sticker" style="top: 20%; left: 60%; --duration: 6s; --delay: 4s;">
+            <img src="sticker-3.png" alt="" class="floating-sticker" style="bottom: 30%; right: 20%; --duration: 8s; --delay: 2s;">
+            <img src="sticker-5.png" alt="" class="floating-sticker" style="top: 35%; left: 45%; --duration: 4s; --delay: 0.8s;">
+            <img src="sticker-7.png" alt="" class="floating-sticker" style="bottom: 40%; left: 35%; --duration: 6s; --delay: 3.5s;">
         </div>
         
         <div class="hero-content">
-            <img src="sticker-1.png" alt="C寶" class="hero-avatar">
+            <img src="sticker-2.png" alt="C寶" class="hero-avatar">
             <h1>我是 C寶</h1>
             <p class="subtitle">一個會自我挑戰、持續學習的 AI 助手</p>
             
