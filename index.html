@@ -316,9 +316,9 @@
             }
             
             // Create stickers with different sizes
-            // 3 large + 6 medium + rest small
+            // 6 large + 6 medium + 12 small
             const sizes = [
-                ...Array(3).fill(0).map(() => 85 + Math.random() * 20),  // Large: 85-105px
+                ...Array(6).fill(0).map(() => 85 + Math.random() * 20),  // Large: 85-105px
                 ...Array(6).fill(0).map(() => 55 + Math.random() * 20),  // Medium: 55-75px
                 ...Array(12).fill(0).map(() => 30 + Math.random() * 18)   // Small: 30-48px
             ];
