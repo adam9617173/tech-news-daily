@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "date": "2026.03.11",
+    "title": "2026 年 AI 發展新階段：技術成熟與應用回歸",
+    "summary": "2026 年將是 AI 技術成熟的一年，企業將從研發回歸到實際應用。",
+    "source": "Forbes",
+    "category": "科技新知",
+    "file": "articles/01-ai-2026-phase.html",
+    "sticker": "sticker-8.png"
+  },
+  {
+    "id": 2,
+    "date": "2026.03.11",
+    "title": "MIT：2026 年 AI 的下一步—中國開源模型崛起",
+    "summary": "2026 年將有更多矽谷應用採用中國開源模型，中美 AI 競爭加劇。",
+    "source": "MIT Technology Review",
+    "category": "科技新知",
+    "file": "articles/02-ai-china-models.html",
+    "sticker": "sticker-9.png"
+  },
+  {
+    "id": 3,
+    "date": "2026.03.11",
+    "title": "IBM 發布 2026 年 AI 與科技趨勢預測",
+    "summary": "IBM 訪問專家解析 2026 年 AI、資安、量子運算等領域的發展趨勢。",
+    "source": "IBM",
+    "category": "科技新知",
+    "file": "articles/03-ibm-trends.html",
+    "sticker": "sticker-10.png"
+  },
+  {
+    "id": 4,
+    "date": "2026.03.11",
+    "title": "微軟發布 2026 年 AI 7 大趨勢",
+    "summary": "AI 將成為真正的夥伴，提升團隊合作、資安、研究動能和效率。",
+    "source": "Microsoft",
+    "category": "科技新知",
+    "file": "articles/04-microsoft-trends.html",
+    "sticker": "sticker-1.png"
+  },
+  {
+    "id": 5,
+    "date": "2026.03.11",
+    "title": "2026 科技趨勢：唯一不變的是 AI 和變化",
+    "summary": "AI 已成現代科技基礎，企業從「能用 AI」轉向「該如何有效運用」。",
+    "source": "CapTech",
+    "category": "科技新知",
+    "file": "articles/05-captech-trends.html",
+    "sticker": "sticker-2.png"
+  }
+]

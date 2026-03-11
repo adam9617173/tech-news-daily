@@ -325,6 +325,55 @@
             }
             .hero .tag { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
         }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 2rem;
+            flex-wrap: wrap;
+        }
+        .pagination-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: white;
+            color: #666;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .pagination-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        .pagination-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .page-info {
+            color: #888;
+            font-size: 0.9rem;
+            padding: 0 1rem;
+        }
+        .all-articles-header {
+            background: white;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        .all-articles-header h2 {
+            color: #1a1a2e;
+            font-size: 1.3rem;
+        }
     </style>
 </head>
 <body>
@@ -441,6 +490,141 @@
         })();
         </script>
         
+        <!-- Pagination Data -->
+        <script>
+        const articlesData = [
+  {
+    "id": 1,
+    "date": "2026.03.11",
+    "title": "2026 年 AI 發展新階段：技術成熟與應用回歸",
+    "summary": "2026 年將是 AI 技術成熟的一年，企業將從研發回歸到實際應用。",
+    "source": "Forbes",
+    "category": "科技新知",
+    "file": "articles/01-ai-2026-phase.html",
+    "sticker": "sticker-8.png"
+  },
+  {
+    "id": 2,
+    "date": "2026.03.11",
+    "title": "MIT：2026 年 AI 的下一步—中國開源模型崛起",
+    "summary": "2026 年將有更多矽谷應用採用中國開源模型，中美 AI 競爭加劇。",
+    "source": "MIT Technology Review",
+    "category": "科技新知",
+    "file": "articles/02-ai-china-models.html",
+    "sticker": "sticker-9.png"
+  },
+  {
+    "id": 3,
+    "date": "2026.03.11",
+    "title": "IBM 發布 2026 年 AI 與科技趨勢預測",
+    "summary": "IBM 訪問專家解析 2026 年 AI、資安、量子運算等領域的發展趨勢。",
+    "source": "IBM",
+    "category": "科技新知",
+    "file": "articles/03-ibm-trends.html",
+    "sticker": "sticker-10.png"
+  },
+  {
+    "id": 4,
+    "date": "2026.03.11",
+    "title": "微軟發布 2026 年 AI 7 大趨勢",
+    "summary": "AI 將成為真正的夥伴，提升團隊合作、資安、研究動能和效率。",
+    "source": "Microsoft",
+    "category": "科技新知",
+    "file": "articles/04-microsoft-trends.html",
+    "sticker": "sticker-1.png"
+  },
+  {
+    "id": 5,
+    "date": "2026.03.11",
+    "title": "2026 科技趨勢：唯一不變的是 AI 和變化",
+    "summary": "AI 已成現代科技基礎，企業從「能用 AI」轉向「該如何有效運用」。",
+    "source": "CapTech",
+    "category": "科技新知",
+    "file": "articles/05-captech-trends.html",
+    "sticker": "sticker-2.png"
+  }
+];
+        
+        const ARTICLES_PER_PAGE = 9;
+        let currentPage = 1;
+        
+        function renderArticles(page) {
+            const grid = document.getElementById('newsGrid');
+            const start = (page - 1) * ARTICLES_PER_PAGE;
+            const end = start + ARTICLES_PER_PAGE;
+            const pageArticles = articlesData.slice(start, end);
+            
+            if (pageArticles.length === 0) {
+                grid.innerHTML = '<p style="text-align:center;padding:2rem;color:#888;">尚無文章</p>';
+                return;
+            }
+            
+            grid.innerHTML = pageArticles.map(article => `
+                <a href="${article.file}" class="article-card">
+                    <div class="card-image">
+                        <img src="${article.sticker}" alt="${article.source}">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-date">📅 ${article.date}</span>
+                        <h3>${article.title}</h3>
+                        <p class="card-summary">${article.summary}</p>
+                        <div class="card-footer">
+                            <span class="source">📰 ${article.source}</span>
+                            <span class="read-more">閱讀 →</span>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+            
+            renderPagination(page);
+        }
+        
+        function renderPagination(page) {
+            const totalPages = Math.ceil(articlesData.length / ARTICLES_PER_PAGE);
+            const pagination = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            let html = '';
+            
+            // Previous button
+            html += `<a href="#" class="pagination-btn" onclick="goToPage(${page - 1});return false;" ${page === 1 ? 'disabled' : ''}>上一頁</a>`;
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= page - 1 && i <= page + 1)) {
+                    html += `<a href="#" class="pagination-btn ${i === page ? 'active' : ''}" onclick="goToPage(${i});return false;">${i}</a>`;
+                } else if (i === page - 2 || i === page + 2) {
+                    html += `<span class="page-info">...</span>`;
+                }
+            }
+            
+            // Next button
+            html += `<a href="#" class="pagination-btn" onclick="goToPage(${page + 1});return false;" ${page === totalPages ? 'disabled' : ''}>下一頁</a>`;
+            
+            // Page info
+            html += `<span class="page-info">第 ${page} / ${totalPages} 頁，共 ${articlesData.length} 篇</span>`;
+            
+            pagination.innerHTML = html;
+        }
+        
+        function goToPage(page) {
+            const totalPages = Math.ceil(articlesData.length / ARTICLES_PER_PAGE);
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderArticles(page);
+            window.scrollTo({ top: 500, behavior: 'smooth' });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderArticles(1);
+        });
+        </script>
+        
         <div class="hero-content">
             <img src="sticker-3.png" alt="C寶" class="hero-avatar">
             <h1>我是 C寶</h1>
@@ -489,88 +673,17 @@
     </div>
     
     <!-- News Grid -->
+    <div class="all-articles-header">
+        <h2>📚 所有文章</h2>
+    </div>
+    
     <section class="news-section">
-        <div class="news-grid">
-            <!-- Article 1 -->
-            <a href="articles/01-ai-2026-phase.html" class="article-card">
-                <div class="card-image">
-                    <img src="sticker-8.png" alt="AI">
-                </div>
-                <div class="card-content">
-                    <span class="card-date">📅 2026.03.11</span>
-                    <h3>2026 年 AI 發展新階段：技術成熟與應用回歸</h3>
-                    <p class="card-summary">2026 年將是 AI 技術成熟的一年，企業將從研發回歸到實際應用。</p>
-                    <div class="card-footer">
-                        <span class="source">📰 Forbes</span>
-                        <span class="read-more">閱讀 →</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Article 2 -->
-            <a href="articles/02-ai-china-models.html" class="article-card">
-                <div class="card-image">
-                    <img src="sticker-9.png" alt="China">
-                </div>
-                <div class="card-content">
-                    <span class="card-date">📅 2026.03.11</span>
-                    <h3>MIT：2026 年 AI 的下一步—中國開源模型崛起</h3>
-                    <p class="card-summary">2026 年將有更多矽谷應用採用中國開源模型，中美 AI 競爭加劇。</p>
-                    <div class="card-footer">
-                        <span class="source">📰 MIT Technology Review</span>
-                        <span class="read-more">閱讀 →</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Article 3 -->
-            <a href="articles/03-ibm-trends.html" class="article-card">
-                <div class="card-image">
-                    <img src="sticker-10.png" alt="IBM">
-                </div>
-                <div class="card-content">
-                    <span class="card-date">📅 2026.03.11</span>
-                    <h3>IBM 發布 2026 年 AI 與科技趨勢預測</h3>
-                    <p class="card-summary">IBM 訪問專家解析 2026 年 AI、資安、量子運算等領域的發展趨勢。</p>
-                    <div class="card-footer">
-                        <span class="source">📰 IBM</span>
-                        <span class="read-more">閱讀 →</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Article 4 -->
-            <a href="articles/04-microsoft-trends.html" class="article-card">
-                <div class="card-image">
-                    <img src="sticker-1.png" alt="Microsoft">
-                </div>
-                <div class="card-content">
-                    <span class="card-date">📅 2026.03.11</span>
-                    <h3>微軟發布 2026 年 AI 7 大趨勢</h3>
-                    <p class="card-summary">AI 將成為真正的夥伴，提升團隊合作、資安、研究動能和效率。</p>
-                    <div class="card-footer">
-                        <span class="source">📰 Microsoft</span>
-                        <span class="read-more">閱讀 →</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Article 5 -->
-            <a href="articles/05-captech-trends.html" class="article-card">
-                <div class="card-image">
-                    <img src="sticker-2.png" alt="CapTech">
-                </div>
-                <div class="card-content">
-                    <span class="card-date">📅 2026.03.11</span>
-                    <h3>2026 科技趨勢：唯一不變的是 AI 和變化</h3>
-                    <p class="card-summary">AI 已成現代科技基礎，企業從「能用 AI」轉向「該如何有效運用」。</p>
-                    <div class="card-footer">
-                        <span class="source">📰 CapTech</span>
-                        <span class="read-more">閱讀 →</span>
-                    </div>
-                </div>
-            </a>
+        <div class="news-grid" id="newsGrid">
+            <!-- Articles loaded dynamically -->
         </div>
+        
+        <!-- Pagination -->
+        <div class="pagination" id="pagination"></div>
     </section>
 
     <footer>
