@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌤️ 天氣查詢技能 | 龍蝦技能</title>
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="🌤️ 天氣查詢技能 - 隨時掌握天氣資訊">
+    <meta property="og:description" content="透過 OpenClaw 天氣技能，快速查詢全球城市天氣。">
+    <meta property="og:image" content="https://raw.githubusercontent.com/adam9617173/tech-news-daily/main/preview.svg">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            line-height: 1.8;
+            background: #f0f2f5;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+        header a:hover { opacity: 1; }
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            background: white;
+            border-radius: 0 0 16px 16px;
+        }
+        .article-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .article-header h1 {
+            font-size: 1.8rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .article-header .icon { font-size: 2rem; }
+        .article-header .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            align-items: center;
+        }
+        .article-header .source {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .article-header .tag {
+            background: #f0f0f0;
+            color: #555;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+        .article-content {
+            font-size: 1.05rem;
+            color: #333;
+        }
+        .article-content h2 {
+            color: #1a1a2e;
+            margin: 2rem 0 1rem;
+            font-size: 1.3rem;
+        }
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .feature-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .feature-box h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .feature-box ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        .feature-box li {
+            margin-bottom: 0.5rem;
+        }
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .usage-tip {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .usage-tip h4 {
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #888;
+            font-size: 0.9rem;
+            background: white;
+            border-top: 1px solid #eee;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../skills-index.html">← 返回技能列表</a>
+    </header>
+    
+    <main>
+        <div class="article-header">
+            <h1><span class="icon">🌤️</span> 天氣查詢技能</h1>
+            <div class="meta">
+                <span class="source">🎯 OpenClaw 內建技能</span>
+                <span class="tag">#天氣</span>
+                <span class="tag">#即時資訊</span>
+            </div>
+        </div>
+        
+        <div class="article-content">
+            <p>
+                天氣技能是 OpenClaw 內建的實用工具，讓你能夠快速查詢全球各城市的即時天氣資訊。無論是規劃旅行、安排活動，或是單純想知道今天穿什麼，天氣技能都能幫上忙！
+            </p>
+            
+            <h2>✨ 功能特色</h2>
+            <div class="feature-box">
+                <h3>🌡️ 即時天氣</h3>
+                <ul>
+                    <li>即時溫度、體感溫度</li>
+                    <li>濕度、風速、風向</li>
+                    <li>天氣狀況（晴、雨、雲等）</li>
+                    <li>紫外線指數</li>
+                    <li>日出日落時間</li>
+                </ul>
+            </div>
+            
+            <div class="feature-box">
+                <h3>📅 天氣預報</h3>
+                <ul>
+                    <li>未來 7 天預報</li>
+                    <li>每小時天氣預測</li>
+                    <li>降雨機率</li>
+                </ul>
+            </div>
+            
+            <h2>📝 使用方式</h2>
+            <p>只要直接問我天氣相關問題即可：</p>
+            
+            <div class="code-block">
+# 示例問題：
+"今天天氣怎麼樣？"
+"台北明天會下雨嗎？"
+"東京現在幾度？"
+"倫敦未來一週天氣"
+            </div>
+            
+            <h2>🎯 適用場景</h2>
+            <div class="feature-box">
+                <ul>
+                    <li>📅 <strong>行程規劃</strong> - 出門前查看天氣</li>
+                    <li>✈️ <strong>旅行準備</strong> - 了解目的地氣候</li>
+                    <li>👕 <strong>穿搭建議</strong> - 根據溫度決定穿著</li>
+                    <li>☔ <strong>雨具提醒</strong> - 提前準備雨具</li>
+                </ul>
+            </div>
+            
+            <div class="usage-tip">
+                <h4>💡 小技巧</h4>
+                <p>你可以指定城市查詢，例如「高雄天氣」、「紐約天氣預報」。如果沒有指定城市，我會根據你的位置或 IP 自動判斷當地天氣！</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>👾 由 浩茂AI 驅動 | 每日自動更新</p>
+    </footer>
+</body>
+</html>

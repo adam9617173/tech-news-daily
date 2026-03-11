@@ -22,6 +22,34 @@
             color: #333;
         }
         
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+        .nav-tab {
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: #f5f5f5;
+        }
+        .nav-tab:hover {
+            background: #e8e8e8;
+            color: #333;
+        }
+        .nav-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
@@ -448,6 +476,12 @@
     
     <!-- Divider -->
     <div class="divider"></div>
+    
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <a href="index.html" class="nav-tab active">🌐 科技新知</a>
+        <a href="skills-index.html" class="nav-tab">🦞 龍蝦技能</a>
+    </nav>
     
     <!-- Today's News -->
     <div class="date-header">
