@@ -492,546 +492,76 @@
         
         <!-- Pagination Data -->
         <script>
-        const articlesData = [
-  // 2026.03.20
-  {
-    "id": 1,
-    "date": "2026.03.20",
-    "title": "Amazon 收購會爬樓梯的送貨機器人",
-    "summary": "Amazon 收購 Rivr 送貨機器人，持續佈局物流自動化。",
-    "source": "TechCrunch",
-    "category": "AI 物流",
-    "file": "articles/49-amazon-rivr.html",
-    "sticker": "sticker-1.png"
-  },
-  {
-    "id": 2,
-    "date": "2026.03.20",
-    "title": "貝佐斯擬砸千億美元收購傳產",
-    "summary": "Jeff Bezos 傳想用千億美元收購傳統製造公司，用 AI 改造。",
-    "source": "TechCrunch",
-    "category": "科技巨頭",
-    "file": "articles/50-bezos-ai.html",
-    "sticker": "sticker-2.png"
-  },
-  {
-    "id": 3,
-    "date": "2026.03.20",
-    "title": "餐廳機器人失控大跳舞",
-    "summary": "加州餐廳人形機器人失控跳舞，員工被迫制止。",
-    "source": "TechCrunch",
-    "category": "機器人",
-    "file": "articles/51-robot-dance.html",
-    "sticker": "sticker-3.png"
-  },
-  {
-    "id": 4,
-    "date": "2026.03.20",
-    "title": "2027 年機器人流量將超越人類",
-    "summary": "Cloudflare CEO 預測線上機器人流量將在 2027 年超越人類。",
-    "source": "TechCrunch",
-    "category": "網路趨勢",
-    "file": "articles/52-bot-traffic.html",
-    "sticker": "sticker-4.png"
-  },
-  {
-    "id": 5,
-    "date": "2026.03.20",
-    "title": "Bluesky 獲 1 億美元 B 輪融資",
-    "summary": "Bluesky 完成 1 億美元融資，CEO 交接後持續成長。",
-    "source": "TechCrunch",
-    "category": "社群平台",
-    "file": "articles/53-bluesky-funding.html",
-    "sticker": "sticker-5.png"
-  },
+const articlesData = [
   // 2026.03.19
   {
     "id": 1,
     "date": "2026.03.19",
-    "title": "當 AI 失控時：Meta 對 AI 代理程式頭疼",
-    "summary": "Meta 正在處理 AI 代理程式的失控問題，引發對 AI 管理的討論。",
+    "title": "🤖 2026 年 AI 發展新階段",
+    "summary": "技術成熟與應用回歸",
     "source": "TechCrunch",
-    "category": "AI 科技",
-    "file": "articles/44-meta-ai.html",
-    "sticker": "sticker-1.png"
-  },
-  {
-    "id": 2,
-    "date": "2026.03.19",
-    "title": "Sam Altman 的感謝文掀起網路狂歡",
-    "summary": "OpenAI 執行長的感謝文引發大量迷因創作，網路熱議。",
-    "source": "TechCrunch",
-    "category": "AI 科技",
-    "file": "articles/45-sam-altman.html",
-    "sticker": "sticker-2.png"
-  },
-  {
-    "id": 3,
-    "date": "2026.03.19",
-    "title": "智慧型手機 App 即將消失？",
-    "summary": "Nothing CEO 預言 AI 代理將取代智慧型手機 App。",
-    "source": "TechCrunch",
-    "category": "手機科技",
-    "file": "articles/46-nothing-app.html",
-    "sticker": "sticker-3.png"
-  },
-  {
-    "id": 4,
-    "date": "2026.03.19",
-    "title": "Nvidia 悄悄打造數十億美元帝國",
-    "summary": "Nvidia 正在開發新事業，未來可能與晶片業務一樣大。",
-    "source": "TechCrunch",
-    "category": "AI 晶片",
-    "file": "articles/47-nvidia-business.html",
-    "sticker": "sticker-4.png"
-  },
-  {
-    "id": 5,
-    "date": "2026.03.19",
-    "title": "FBI 承認購買位置資料追蹤公民",
-    "summary": "FBI 局長證實 FBI 購買位置資料，引發隱私爭議。",
-    "source": "TechCrunch",
-    "category": "隱私資安",
-    "file": "articles/48-fbi-privacy.html",
-    "sticker": "sticker-5.png"
-  },
-  // 2026.03.18
-  {
-    "id": 1,
-    "date": "2026.03.18",
-    "title": "Mistral 押注「自建 AI」：挑戰 OpenAI 和 Anthropic",
-    "summary": "法國 AI 新創推企業級自建 AI 方案，強調資料隱私和自主控制。",
-    "source": "TechCrunch",
-    "category": "AI 企業",
-    "file": "articles/39-mistral-ai.html",
-    "sticker": "sticker-1.png"
-  },
-  {
-    "id": 2,
-    "date": "2026.03.18",
-    "title": "Apple 推出首次「背景安全更新」",
-    "summary": "修補 Safari 漏洞，無需使用者操作即可自動更新。",
-    "source": "TechCrunch",
-    "category": "Apple",
-    "file": "articles/40-apple-security.html",
-    "sticker": "sticker-2.png"
-  },
-  {
-    "id": 3,
-    "date": "2026.03.18",
-    "title": "Google Personal Intelligence 擴展至全美",
-    "summary": "個人化 AI 助手整合 Gmail、日曆，提供專屬建議和洞察。",
-    "source": "TechCrunch",
-    "category": "Google AI",
-    "file": "articles/41-google-ai.html",
-    "sticker": "sticker-3.png"
-  },
-  {
-    "id": 4,
-    "date": "2026.03.18",
-    "title": "Oura Ring 4 進軍印度市場",
-    "summary": "智慧戒指領導品牌首度進軍南亞，瞄準年輕消費群體。",
-    "source": "TechCrunch",
-    "category": "智慧穿戴",
-    "file": "articles/42-oura-ring.html",
-    "sticker": "sticker-4.png"
-  },
-  {
-    "id": 5,
-    "date": "2026.03.18",
-    "title": "Apple 本月新品總整理",
-    "summary": "MacBook Neo、AirPods Max 2、iPhone 17e 齊發。",
-    "source": "TechCrunch",
-    "category": "Apple",
-    "file": "articles/43-apple-march.html",
-    "sticker": "sticker-5.png"
-  },
-  // 2026.03.17
-  {
-    "id": 1,
-    "date": "2026.03.17",
-    "title": "NVIDIA DLSS 5 震撼發表：生成式 AI 革新遊戲畫質",
-    "summary": "全新一代深度學習超級取樣技術，透過生成式 AI 將遊戲畫質推向新境界。",
-    "source": "TechCrunch",
-    "category": "AI 顯示卡",
-    "file": "articles/34-dlss5.html",
-    "sticker": "sticker-1.png"
-  },
-  {
-    "id": 2,
-    "date": "2026.03.17",
-    "title": "Apple 收購 MotionVFX：強化 Final Cut Pro 陣容",
-    "summary": "專業影片後製效果外掛開發商加入 Apple，強化專業剪輯軟體市場競爭力。",
-    "source": "TechCrunch",
-    "category": "Apple",
-    "file": "articles/35-motionvfx.html",
-    "sticker": "sticker-2.png"
-  },
-  {
-    "id": 3,
-    "date": "2026.03.17",
-    "title": "Apple 靜音推出 AirPods Max 2：售價更親民",
-    "summary": "全新 H3 晶片、更強降噪、30小時續航，價格更具競爭力。",
-    "source": "TechCrunch",
-    "category": "Apple",
-    "file": "articles/36-airpods.html",
-    "sticker": "sticker-3.png"
-  },
-  {
-    "id": 4,
-    "date": "2026.03.17",
-    "title": "黃仁勳 GTC 2026 主題演講：AI 時代的願景",
-    "summary": "Blackwell 和 Vera Rubin 銷售預測上調，市值朝向 1 兆美元邁進。",
-    "source": "TechCrunch",
-    "category": "NVIDIA",
-    "file": "articles/37-gtc2026.html",
-    "sticker": "sticker-4.png"
-  },
-  {
-    "id": 5,
-    "date": "2026.03.17",
-    "title": "Shopify 全面擁抱 AI：購物助手將改變零售業",
-    "summary": "AI 助手能理解消費者需求，提供個人化推薦，徹底改變購物體驗。",
-    "source": "TechCrunch",
-    "category": "電商 AI",
-    "file": "articles/38-shopify-ai.html",
-    "sticker": "sticker-5.png"
-  },
-  // 2026.03.16
-  {
-    "id": 6,
-    "date": "2026.03.16",
-    "title": "Samsung Galaxy S26 全面 AI 化",
-    "summary": "2026 年目標 8 億設備，Gemini 可自主操作第三方 App。",
-    "source": "Yahoo Finance",
-    "category": "科技新知",
-    "file": "articles/29-samsung-s26-ai.html",
-    "sticker": "sticker-1.png"
-  },
-  {
-    "id": 2,
-    "date": "2026.03.16",
-    "title": "Anthropic 對決美國國防部",
-    "summary": "國防部將 Anthropic 列入供應鏈風險，Microsoft、Amazon、Google 表態 Claude 仍可用。",
-    "source": "TechCrunch",
-    "category": "科技新知",
-    "file": "articles/30-anthropic-pentagon.html",
-    "sticker": "sticker-2.png"
-  },
-  {
-    "id": 3,
-    "date": "2026.03.16",
-    "title": "Microsoft 將 Claude 整合進 Copilot",
-    "summary": "Copilot 引入 Claude 模型，盼提升 AI 助手多元性。",
-    "source": "YouTube",
-    "category": "科技新知",
-    "file": "articles/31-microsoft-copilot-claude.html",
-    "sticker": "sticker-3.png"
-  },
-  {
-    "id": 4,
-    "date": "2026.03.16",
-    "title": "NVIDIA GTC 2026 开幕",
-    "summary": "全球最大 AI 會議將於 3/16-19 舉行，主題包括 Physical AI、Agentic AI。",
-    "source": "NVIDIA",
-    "category": "科技新知",
-    "file": "articles/32-nvidia-gtc-2026.html",
-    "sticker": "sticker-4.png"
-  },
-  {
-    "id": 5,
-    "date": "2026.03.16",
-    "title": "AI 信任度下降：46% 民眾持負面看法",
-    "summary": "NBC News 民調顯示，僅 26% 正面看法，AI 普及面臨信任障礙。",
-    "source": "NBC News",
-    "category": "科技新知",
-    "file": "articles/33-ai-trust-poll.html",
-    "sticker": "sticker-5.png"
-  },
-  // 2026.03.15
-  {
-    "id": 1,
-    "date": "2026.03.15",
-    "title": "Samsung Galaxy S26 全面搭載 AI",
-    "summary": "Samsung 發布 Galaxy S26 系列，Google Gemini 可以在第三方 App 自主操作。",
-    "source": "Yahoo Finance",
-    "category": "科技新知",
-    "file": "articles/24-samsung-s26.html",
-    "sticker": "sticker-8.png"
-  },
-  {
-    "id": 2,
-    "date": "2026.03.15",
-    "title": "Google Gemini 變身 AI 助手",
-    "summary": "Gemini 未來可以幫你完成多步驟任務，訂餐、叫車。",
-    "source": "The Verge",
-    "category": "科技新知",
-    "file": "articles/25-gemini-agent.html",
-    "sticker": "sticker-9.png"
-  },
-  {
-    "id": 3,
-    "date": "2026.03.15",
-    "title": "2026 年手機大戰：蘋果 vs 三星",
-    "summary": "三大品牌旗艦手機齊發，AI 功能成競爭關鍵。",
-    "source": "CNET",
-    "category": "科技新知",
-    "file": "articles/26-phone-2026.html",
-    "sticker": "sticker-10.png"
-  },
-  {
-    "id": 4,
-    "date": "2026.03.15",
-    "title": "MIT 評選 2026 年 10 大突破技術",
-    "summary": "鈉離子電池、生成式 AI 編碼、核能發電等入選。",
-    "source": "MIT Technology Review",
-    "category": "科技新知",
-    "file": "articles/27-mit-breakthrough.html",
-    "sticker": "sticker-1.png"
-  },
-  {
-    "id": 5,
-    "date": "2026.03.15",
-    "title": "中國加速 AI 工業化",
-    "summary": "中國快速將 AI 工具商業化，AI 代理產業化加速。",
-    "source": "Tech Startups",
-    "category": "科技新知",
-    "file": "articles/28-china-ai.html",
-    "sticker": "sticker-2.png"
-  },
-  // 2026.03.14
-  {
-    "id": 1,
-    "date": "2026.03.14",
-    "title": "2026 年 3 月 AI 模型發布彙整",
-    "summary": "3 月 AI 模型發布熱潮，Nvidia 突破性晶片，AI 倫理問題持續受關注。",
-    "source": "Mean CEO Blog",
-    "category": "科技新知",
-    "file": "articles/21-ai-march-models.html",
-    "sticker": "sticker-8.png"
-  },
-  {
-    "id": 2,
-    "date": "2026.03.14",
-    "title": "2026 年 3 月：AI 產業最瘋狂的一週",
-    "summary": "多家主要 AI 公司推出新模型，競爭異常激烈，技術快速滲透各行業。",
-    "source": "Julian Goldie",
-    "category": "科技新知",
-    "file": "articles/22-ai-wild-week.html",
-    "sticker": "sticker-9.png"
-  },
-  {
-    "id": 3,
-    "date": "2026.03.14",
-    "title": "科技領袖瘋狂 AI，民眾卻冷感",
-    "summary": "科技領袖對 AI 充滿熱情，但民眾對 AI 改造世界計畫反應平淡。",
-    "source": "The Star",
-    "category": "科技新知",
-    "file": "articles/23-tech-leaders.html",
-    "sticker": "sticker-10.png"
-  },
-  // 2026.03.13
-  {
-    "id": 1,
-    "date": "2026.03.13",
-    "title": "Google Maps 十年最大更新：AI 驅動沉浸式導航",
-    "summary": "Google 推出最大 Maps 更新！3D 沉浸式導航 + AI 聊天功能，未來幾週在美國率先推出。",
-    "source": "WDBJ / Neowin",
-    "category": "科技新知",
-    "file": "articles/20-google-maps.html",
-    "sticker": "preview-google-maps-v2.png"
-  },
-  {
-    "id": 2,
-    "date": "2026.03.13",
-    "title": "OpenAI 整合 Promptfoo 強化資安",
-    "summary": "OpenAI 將整合 Promptfoo 核心技術到模型中，讓團隊能及早發現資安漏洞。",
-    "source": "Radical Data Science",
-    "category": "科技新知",
-    "file": "articles/14-promptfoo.html",
-    "sticker": "sticker-8.png"
-  },
-  {
-    "id": 2,
-    "date": "2026.03.13",
-    "title": "2026 年 3 月 AI 新模型發布彙整",
-    "summary": "彙整 3 月最新 AI 模型發布、Nvidia 突破性晶片及 AI 倫理觀點。",
-    "source": "Mean CEO Blog",
-    "category": "科技新知",
-    "file": "articles/15-march-ai-models.html",
-    "sticker": "sticker-9.png"
-  },
-  {
-    "id": 3,
-    "date": "2026.03.13",
-    "title": "創投資金湧入 AI 領域",
-    "summary": "AI 領域創下歷史新高紀錄，巨型基金持續增強，機器人技術快速成長。",
-    "source": "Sergey Tereshkin",
-    "category": "科技新知",
-    "file": "articles/16-ai-venture.html",
-    "sticker": "sticker-10.png"
-  },
-  {
-    "id": 4,
-    "date": "2026.03.13",
-    "title": "Meta 從元宇宙轉向 AI 設備",
-    "summary": "Meta 策略大轉變，從元宇宙轉向 AI 設備發展。",
-    "source": "Bloomberg Tech",
-    "category": "科技新知",
-    "file": "articles/17-meta-ai-devices.html",
-    "sticker": "sticker-1.png"
-  },
-  {
-    "id": 5,
-    "date": "2026.03.13",
-    "title": "Nvidia CEO：AI 將成基礎設施",
-    "summary": "黃仁勳表示 AI 將成為基礎設施，像電力或網際網路一樣重要。",
-    "source": "Yahoo Finance",
-    "category": "科技新知",
-    "file": "articles/18-nvidia-ceo.html",
-    "sticker": "sticker-2.png"
-  },
-  {
-    "id": 6,
-    "date": "2026.03.13",
-    "title": "學生用 AI 幫助植物「說話」",
-    "summary": "大學生使用 AI 技術讓植物能自動通知主人澆水或日照需求。",
-    "source": "CNN",
-    "category": "科技新知",
-    "file": "articles/19-plant-ai.html",
-    "sticker": "sticker-3.png"
-  },
-  // 2026.03.12
-  {
-    "id": 1,
-    "date": "2026.03.12",
-    "title": "OpenAI 正式推出 GPT-5.4：100 萬 token 上下文",
-    "summary": "OpenAI 推出 GPT-5.4 和 Pro 版，引入 100 萬 token 上下文視窗，創下業界新紀錄。",
-    "source": "Champaign Magazine",
-    "category": "科技新知",
-    "file": "articles/09-gpt54.html",
-    "sticker": "sticker-8.png"
-  },
-  {
-    "id": 2,
-    "date": "2026.03.12",
-    "title": "Google AI Mode Canvas 全面開放",
-    "summary": "Google 將 AI Mode Canvas 擴展至所有美國用戶，新增程式碼和寫作輔助功能。",
-    "source": "Marketing Profs",
-    "category": "科技新知",
-    "file": "articles/10-google-canvas.html",
-    "sticker": "sticker-9.png"
-  },
-  {
-    "id": 3,
-    "date": "2026.03.12",
-    "title": "Meta 開發 4 款新 AI 晶片",
-    "summary": "Meta 宣布開發 4 款新 AI 晶片，旨在減少對 Nvidia 和 AMD 的依賴。",
-    "source": "Yahoo Finance",
-    "category": "科技新知",
-    "file": "articles/11-meta-ai-chips.html",
-    "sticker": "sticker-10.png"
-  },
-  {
-    "id": 4,
-    "date": "2026.03.12",
-    "title": "蘋果智慧家庭計畫再次延遲",
-    "summary": "蘋果智慧家庭發展計畫再次延遲，雲端資安風險持續上升。",
-    "source": "Tech Startups",
-    "category": "科技新知",
-    "file": "articles/12-apple-smart-home.html",
-    "sticker": "sticker-1.png"
-  },
-  {
-    "id": 5,
-    "date": "2026.03.12",
-    "title": "Oracle 與 OpenAI 終止資料中心合作",
-    "summary": "Oracle 與 OpenAI 終止擴建計畫，但 AI 晶片銷售預計將突破 1000 億美元。",
-    "source": "Bloomberg",
-    "category": "科技新知",
-    "file": "articles/13-oracle-openai.html",
-    "sticker": "sticker-2.png"
-  },
-  // 2026.03.11
-  {
-    "id": 1,
-    "date": "2026.03.11",
-    "title": "2026 年 AI 發展新階段：技術成熟與應用回歸",
-    "summary": "2026 年將是 AI 技術成熟的一年，企業將從研發回歸到實際應用。",
-    "source": "Forbes",
-    "category": "科技新知",
+    "category": "AI 趨勢",
     "file": "articles/01-ai-2026-phase.html",
-    "sticker": "sticker-8.png"
-  },
-  {
-    "id": 2,
-    "date": "2026.03.11",
-    "title": "MIT：2026 年 AI 的下一步—中國開源模型崛起",
-    "summary": "2026 年將有更多矽谷應用採用中國開源模型，中美 AI 競爭加劇。",
-    "source": "MIT Technology Review",
-    "category": "科技新知",
-    "file": "articles/02-ai-china-models.html",
-    "sticker": "sticker-9.png"
-  },
-  {
-    "id": 3,
-    "date": "2026.03.11",
-    "title": "IBM 發布 2026 年 AI 與科技趨勢預測",
-    "summary": "IBM 訪問專家解析 2026 年 AI、資安、量子運算等領域的發展趨勢。",
-    "source": "IBM",
-    "category": "科技新知",
-    "file": "articles/03-ibm-trends.html",
-    "sticker": "sticker-10.png"
-  },
-  {
-    "id": 4,
-    "date": "2026.03.11",
-    "title": "微軟發布 2026 年 AI 7 大趨勢",
-    "summary": "AI 將成為真正的夥伴，提升團隊合作、資安、研究動能和效率。",
-    "source": "Microsoft",
-    "category": "科技新知",
-    "file": "articles/04-microsoft-trends.html",
     "sticker": "sticker-1.png"
   },
   {
-    "id": 5,
-    "date": "2026.03.11",
-    "title": "2026 科技趨勢：唯一不變的是 AI 和變化",
-    "summary": "AI 已成現代科技基礎，企業從「能用 AI」轉向「該如何有效運用」。",
-    "source": "CapTech",
-    "category": "科技新知",
-    "file": "articles/05-captech-trends.html",
+    "id": 2,
+    "date": "2026.03.19",
+    "title": "🌏 中國 AI 模型崛起",
+    "summary": "開源模型挑戰美國主導地位",
+    "source": "TechCrunch",
+    "category": "AI 趨勢",
+    "file": "articles/02-ai-china-models.html",
     "sticker": "sticker-2.png"
   },
-  // 2026.03.10
   {
-    "id": 6,
-    "date": "2026.03.10",
-    "title": "Anthropic 起訴美國國防部：AI 監管爭議升溫",
-    "summary": "AI 公司 Anthropic 對國防部提起訴訟，挑戰 AI 使用限制。這是 AI 產業與政府間的重要法律較量。",
-    "source": "Reuters",
-    "category": "科技新知",
-    "file": "articles/06-anthropic-sues-pentagon.html",
+    "id": 30,
+    "date": "2026.03.19",
+    "title": "🦞 Amazon 收購送貨機器人",
+    "summary": "會爬樓梯的 Rivr 機器人",
+    "source": "TechCrunch",
+    "category": "AI 物流",
+    "file": "articles/30-amazon-rivr.html",
+    "sticker": "sticker-1.png"
+  },
+  {
+    "id": 31,
+    "date": "2026.03.19",
+    "title": "🦞 Bluesky 獲 1 億美元融資",
+    "summary": "CEO 交接後持續成長",
+    "source": "TechCrunch",
+    "category": "社群平台",
+    "file": "articles/31-bluesky-funding.html",
+    "sticker": "sticker-2.png"
+  },
+  {
+    "id": 32,
+    "date": "2026.03.19",
+    "title": "🦞 隱私公司 Cloaked 融資",
+    "summary": "獲 3.75 億美元進軍企業",
+    "source": "TechCrunch",
+    "category": "隱私科技",
+    "file": "articles/32-cloaked-privacy.html",
     "sticker": "sticker-3.png"
   },
   {
-    "id": 7,
-    "date": "2026.03.10",
-    "title": "iPhone 遭駭事件升級：可能與美國軍火商有關",
-    "summary": "研究人員發現間諜工具可能源自美國軍事承包商，被俄羅斯間諜組織使用，引發資安疑慮。",
+    "id": 33,
+    "date": "2026.03.19",
+    "title": "🦞 Google Android 側載新功能",
+    "summary": "更安全的 App 安裝方式",
     "source": "TechCrunch",
-    "category": "科技新知",
-    "file": "articles/07-iphone-hack.html",
+    "category": "Android",
+    "file": "articles/33-google-android.html",
     "sticker": "sticker-4.png"
   },
   {
-    "id": 8,
-    "date": "2026.03.10",
-    "title": "Nvidia 策略轉向：H200 晶片產量提升",
-    "summary": "Nvidia 調整晶片策略，提升 H200 產量。採用先進 HBM3e 記憶體技術，對 AI 訓練至關重要。",
-    "source": "Yahoo Finance",
-    "category": "科技新知",
-    "file": "articles/08-nvidia-h200.html",
+    "id": 34,
+    "date": "2026.03.19",
+    "title": "🦞 Alphabet X 進軍太空計算",
+    "summary": "解決世界上最昂貴的官僚問題",
+    "source": "TechCrunch",
+    "category": "太空科技",
+    "file": "articles/34-alphabet-x.html",
     "sticker": "sticker-5.png"
   }
 ];
