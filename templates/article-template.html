@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}} | 科技新聞 daily</title>
+  
+  <!-- 共用 CSS -->
+  <link rel="stylesheet" href="../styles.css">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{SUMMARY}}">
+  <meta property="og:image" content="../preview.svg">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">📰 科技新聞 daily</div>
+      <ul class="nav-links">
+        <li><a href="../index.html">首頁</a></li>
+        <li><a href="../index.html">最新新聞</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="article-content">
+    <article>
+      <header class="article-header">
+        <span class="category">{{CATEGORY}}</span>
+        <h1>{{TITLE}}</h1>
+        <div class="meta">
+          <span class="date">{{DATE}}</span>
+          <span class="source">來源：TechCrunch</span>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <!-- Featured Image -->
+        <img src="../preview.svg" alt="{{TITLE}}" class="featured-image">
+
+        <!-- Content -->
+        {{CONTENT}}
+
+        <!-- Original Source -->
+        <div class="original-source">
+          <h3>📚 參考原文</h3>
+          <a href="{{SOURCE_URL}}" target="_blank">{{SOURCE_TITLE}} →</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 科技新聞 daily - 用 AI 為你翻譯全球科技新聞</p>
+  </footer>
+</body>
+</html>
