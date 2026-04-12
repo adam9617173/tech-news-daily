@@ -161,3 +161,36 @@ footer {
     color: #9CA3AF;
     font-size: 0.9rem;
 }
+
+/* C寶 Insight Box */
+.article-body h3 {
+    font-size: 1.2rem;
+    color: #4F46E5;
+    margin: 2rem 0 1rem;
+    font-weight: 700;
+    border-left: 4px solid #4F46E5;
+    padding-left: 1rem;
+    background: linear-gradient(90deg, #F3F4F6, transparent);
+    padding: 0.8rem 1rem;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Source Link */
+.article-body .source-link {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #F3F4F6;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.article-body .source-link a {
+    color: #4F46E5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.article-body .source-link a:hover {
+    text-decoration: underline;
+}
