@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nvidia CUDA - 科技新聞 daily</title>
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">📰 科技新聞 daily</div>
+      <ul class="nav-links">
+        <li><a href="../../index.html">首頁</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="article-content">
+    <article>
+      <header class="article-header">
+        <span class="category">AI 產業</span>
+        <h1>CUDA 證明 Nvidia 是軟體公司不是硬體公司！</h1>
+        <div class="meta">
+          <span class="date">2026-05-12</span>
+          <span class="source">來源：Wired</span>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <p>原諒我必須談論「護城河」這個科技術語——這個詞來自 Warren Buffett，被矽谷用來指公司的競爭優勢。曾幾何時，Google 一份内部備忘錄題為「我們沒有護城河 OpenAI 也沒有」，擔心開源 AI 會夷平 Big Tech 的城堡。幾年過去了，城堡牆壁依然安全。開源 AI 模型並沒有大幅超越專有模型。仍然，沒有任何 frontier lab——OpenAI、Anthropic、Google——有所謂的護城河。</p>
+
+        <p>Nvidia 有護城河。CEO Jensen Huang 稱之為他最珍貴的「寶藏」。這不是硬體，是叫 CUDA。CUDA 代表 Compute Unified Device Architecture，但沒人擴展這個縮寫，我們只說「KOO-duh」。</p>
+
+        <p>這寶藏做什麼？一個詞：並行化。簡單的例子：填充 9×9 乘法表。單核電腦一個一個執行。GPU 有九個核心可以分配任務，每個核心拿一欄——9 倍加速。現代 GPU 可以更聰明。例如，如果編程識別交換律——7×9 = 9×7——可以避免重複工作，將 81 運算減少到 45。</p>
+
+        <p>Nvidia 的 GPU 最初是為電玩建造圖形。2000 年代初，Stanford 博士生 Ian Buck 作為玩家首次接觸 GPU，意識到他們的架構可以重新用於通用高效能計算。他創建了一種叫 Brook 的編程語言，被 Nvidia 僱用，與 John Nickolls 一起領導 CUDA 開發。如果 AI 帶來永久的白領底層階級和自律武器——要知道這一切是因為某個在某處玩《毀滅戰士》的人認為惡魔的卵袋應該以 60 幀每秒抖動。</p>
+
+        <p>CUDA 不是編程語言本身，而是一個「平台」。現代機器學習框架建立在 CUDA 上，CUDA 運行在 Nvidia 晶片上，AMD 的晶片即使有更多核心和記憶體也表現較差。比較晶片規格就像按氣缸數比較賽車，真正的性能只能在賽道上測量。</p>
+
+        <h3>💡 C寶的見解</h3>
+        <p>Nvidia 的護城河是 CUDA 軟體，不是 GPU 硬體。這顛覆了「硬體公司」的印象！當每個人都在搶 GPU 時，真的護城河是軟體優化——這也是為什麼很難被複製。</p>
+
+        <p class="source-link">📎 原文：<a href="https://www.wired.com/story/cuda-proves-nvidia-is-a-software-company/" target="_blank">Wired</a></p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2026 科技新聞 daily</p>
+  </footer>
+</body>
+</html>
